@@ -9,6 +9,9 @@ import java.util.List;
  * describe :
  */
 public class BinaryTree {
+	
+	public static int[] array = {1,2,3,4,5,6,7,8};
+	public static List<Integer> preList = new ArrayList<Integer>();
 
 	public static void main(String[] args) {
 		//创建二叉树
@@ -46,6 +49,24 @@ public class BinaryTree {
 		tree.delete(2);
 		System.out.println("前序遍历:");
 		tree.preList();
+		
+		storePre(0);
+		System.out.println(preList);
+	}
+	
+	//顺序存储二叉树
+	public static void storePre(int index) {
+		if(array == null || array.length ==0) {
+			System.out.println("该数组为空");
+			return ;
+		}
+		preList.add(array[index]);
+		if((index*2 + 1)<array.length) {
+			storePre(index*2 + 1);
+		}
+		if((index*2 + 2)<array.length) {
+			storePre(index*2 + 2);
+		}
 	}
 
 }
@@ -118,6 +139,7 @@ class BinaryTreeStructure{
 			System.out.println("该二叉树为空");
 		}
 	}
+	
 }
 
 class TreeNode{
